@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --mode=production",
-    "test": "./node_modules/.bin/mocha --require @babel/register --watch"
+    "test": "./node_modules/.bin/mocha --require @babel/register --watch",
+    "lint": "./node_modules/eslint/bin/eslint.js src --fix"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
+    "husky": "^3.0.0",
     "mocha": "^6.1.4",
     "prop-types": "^15.7.2",
     "webpack": "^4.36.1",
@@ -49,5 +51,10 @@
         }
       ]
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test && npm run lint"
+    }
   }
 }
