@@ -1,5 +1,6 @@
-import { ACTION_TYPES_NAMES } from "./utils/constants.util";
-import combineData from "./utils/combainData.util";
+import { ACTION_TYPES_NAMES } from 'Utils/constants.util';
+import combineData from 'Utils/combainData.util';
+
 const {
   START_FETCH,
   FINISH_FETCH,
@@ -9,11 +10,13 @@ const {
   UPDATE_OBJECT_BY_KEY,
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
-	PUSH_DATA
+  PUSH_DATA,
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
-  const { type, data, entityName, key, isLoading } = action;
+  const {
+    type, data, entityName, key, isLoading,
+  } = action;
 
   if (type === INIT_ENTITY) {
     const newState = state;
@@ -70,7 +73,7 @@ const entityReducer = (state = {}, action) => {
   if (type === TOGGLE_BOOLEAN) {
     const newState = state;
     const oldData = newState[entityName].data;
-    if (typeof oldData == "boolean") {
+    if (typeof oldData === 'boolean') {
       newState[entityName].data = !oldData;
     }
     return { ...newState };

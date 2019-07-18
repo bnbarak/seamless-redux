@@ -1,18 +1,18 @@
-import _ from "lodash";
-import initAction from "../actions/init.action";
-import resetAction from "../actions/reset.action";
-import startAction from "../actions/start.action";
-import finishAction from "../actions/finish.action";
-import newDataAction from "../actions/newData.action";
-import mergeData from "../actions/mergeData.action";
-import updateObjectByKey from "../actions/updateObjectByKey.action";
-import toggleBoolean from "../actions/toggleBoolean.action";
-import pushData from "../actions/pushData.action";
+import _ from 'lodash';
+import initAction from 'Actions/init.action';
+import resetAction from 'Actions/reset.action';
+import startAction from 'Actions/start.action';
+import finishAction from 'Actions/finish.action';
+import newDataAction from 'Actions/newData.action';
+import mergeData from 'Actions/mergeData.action';
+import updateObjectByKey from 'Actions/updateObjectByKey.action';
+import toggleBoolean from 'Actions/toggleBoolean.action';
+import pushData from 'Actions/pushData.action';
 
 class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
     const defaultOptions = {
-      isLoading: true
+      isLoading: true,
     };
     const options = _.extend(defaultOptions, userOptions);
 
@@ -28,7 +28,7 @@ class Entity {
     const { isLoading, data } = this;
     return {
       isLoading,
-      data
+      data,
     };
   }
 
@@ -75,10 +75,10 @@ class Entity {
     toggleBoolean(name, dispatch);
   }
 
-	pushData(data) {
-		const { dispatch, name } = this;
-		pushData(name, data, dispatch);
-	}
+  pushData(data) {
+    const { dispatch, name } = this;
+    pushData(name, data, dispatch);
+  }
 }
 
 export default Entity;

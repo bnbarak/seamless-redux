@@ -17,5 +17,13 @@ module.exports = {
         loader: "babel-loader"
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      Actions: path.resolve(path.resolve(__dirname, "./src/actions/")),
+      Utils: path.resolve(path.resolve(__dirname, "./src/utils/")),
+      Classes: path.resolve(path.resolve(__dirname, "./src/classes/"))
+    }
   }
 };
