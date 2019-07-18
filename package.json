@@ -1,0 +1,36 @@
+{
+  "name": "seamless-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --mode=production",
+    "test": "./node_modules/.bin/mocha --require @babel/register --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "keymirror": "^0.1.1",
+    "lodash": "^4.17.14",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "@emotion/core": "^10.0.14",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "prop-types": "^15.7.2",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
