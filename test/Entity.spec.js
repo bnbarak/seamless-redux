@@ -85,14 +85,14 @@ describe("Entity class", () => {
         isTrue(_.isEqual(data, merge));
       });
 
-			it("should push new data", () => {
-			  const newData = 'x';
-				entity.pushData(newData);
-				const { entities } = store.getState();
-				const { data } = entities[entityName];
-				const lastElement = data[data.length -1];
-				isTrue(newData === lastElement);
-			});
+      it("should push new data", () => {
+        const newData = "x";
+        entity.pushData(newData);
+        const { entities } = store.getState();
+        const { data } = entities[entityName];
+        const lastElement = data[data.length - 1];
+        isTrue(newData === lastElement);
+      });
     });
 
     describe("For [Boolean]", () => {
@@ -133,6 +133,27 @@ describe("Entity class", () => {
       const { entities } = store.getState();
       const { data } = entities[entityName];
       isTrue(_.isEqual(data, defaultState));
+    });
+  });
+
+  describe("entity options", () => {
+    const defaultState = {};
+    let entity;
+    let store;
+
+    before(() => {
+      store = createStore();
+      const { dispatch } = store;
+      const options = {
+        defaultIsLoading: false
+      };
+      entity = new Entity(entityName, defaultState, dispatch, options);
+    });
+
+    it("should have isLoading set to false by default", () => {
+      const { entities } = store.getState();
+      const { isLoading } = entities[entityName];
+      isFalse(isLoading);
     });
   });
 });

@@ -13,6 +13,7 @@ class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
     const defaultOptions = {
       isLoading: true,
+      defaultIsLoading: true
     };
     const options = _.extend(defaultOptions, userOptions);
 
@@ -39,7 +40,7 @@ class Entity {
 
   init() {
     const { options } = this;
-    if (options.isLoading) this.isLoading = true;
+    if (options.isLoading) this.isLoading = options.defaultIsLoading;
     const { dispatch, name } = this;
     const defaultData = this.defaultState;
     initAction(name, defaultData, dispatch);
