@@ -13,7 +13,7 @@ class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
     const defaultOptions = {
       isLoading: true,
-      defaultIsLoading: true
+      defaultIsLoading: true,
     };
     const options = _.extend(defaultOptions, userOptions);
 

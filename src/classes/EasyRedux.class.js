@@ -14,6 +14,7 @@ class EasyRedux {
     const { dispatch } = this;
     const entity = new Entity(entityName, defaultState, dispatch, userOptions);
     this.entities[entityName] = entity;
+    return entity;
   }
 }
 
