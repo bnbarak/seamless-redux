@@ -1,7 +1,7 @@
 import _ from "lodash";
 import Entity from "../src/classes/Entity.class";
 import createStore from "./helpers/reduxStore";
-import { isTrue, isFalse, isUndefined } from "./helpers/testHelpers";
+import { isTrue, isFalse, isUndefined, isNull } from "./helpers/testHelpers";
 
 const fakeDispatch = () => {};
 const entityName = "SomeEntity";
@@ -154,6 +154,41 @@ describe("Entity class", () => {
       const { entities } = store.getState();
       const { isLoading } = entities[entityName];
       isFalse(isLoading);
+    });
+  });
+
+  describe("entity error", () => {
+    const defaultState = {};
+    const someError = { a: 1 };
+    let entity;
+    let store;
+
+    before(() => {
+      store = createStore();
+      const { dispatch } = store;
+      entity = new Entity(entityName, defaultState, dispatch);
+    });
+
+    it("should have isError set to false in the init state", () => {
+      const { entities } = store.getState();
+      const { isError } = entities[entityName];
+      isFalse(isError);
+    });
+
+    it("should set some data in error", () => {
+      entity.newError(someError);
+      const { entities } = store.getState();
+      const { isError, error } = entities[entityName];
+      isTrue(isError);
+      isTrue(_.isEqual(error, someError));
+    });
+
+    it("should reset the data in error", () => {
+      entity.resetError();
+      const { entities } = store.getState();
+      const { isError, error } = entities[entityName];
+      isFalse(isError);
+      isNull(error);
     });
   });
 });

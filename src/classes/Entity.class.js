@@ -8,6 +8,7 @@ import mergeData from 'Actions/mergeData.action';
 import updateObjectByKey from 'Actions/updateObjectByKey.action';
 import toggleBoolean from 'Actions/toggleBoolean.action';
 import pushData from 'Actions/pushData.action';
+import newError from 'Actions/newError.action';
 
 class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
@@ -20,16 +21,17 @@ class Entity {
     this.options = options;
     this.dispatch = dispatch;
     this.name = name;
-    this.data = defaultData;
     this.defaultData = defaultData;
+    this.isError = false;
     this.init();
   }
 
   get defaultState() {
-    const { isLoading, data } = this;
+    const { isLoading, defaultData, isError } = this;
     return {
       isLoading,
-      data,
+      isError,
+      data: defaultData,
     };
   }
 
@@ -79,6 +81,16 @@ class Entity {
   pushData(data) {
     const { dispatch, name } = this;
     pushData(name, data, dispatch);
+  }
+
+  newError(data) {
+    const { dispatch, name } = this;
+    newError(name, data, true, dispatch);
+  }
+
+  resetError() {
+    const { dispatch, name } = this;
+    newError(name, null, false, dispatch);
   }
 }
 

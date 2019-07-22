@@ -11,11 +11,12 @@ const {
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
   PUSH_DATA,
+	NEW_ERROR
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
   const {
-    type, data, entityName, key, isLoading,
+    type, data, entityName, key, isLoading, isError
   } = action;
 
   if (type === INIT_ENTITY) {
@@ -82,6 +83,13 @@ const entityReducer = (state = {}, action) => {
   if (type === PUSH_DATA) {
     const newState = state;
     newState[entityName].data.push(data);
+    return { ...newState };
+  }
+
+  if (type === NEW_ERROR) {
+    const newState = state;
+    newState[entityName].error = data;
+    newState[entityName].isError = isError;
     return { ...newState };
   }
 

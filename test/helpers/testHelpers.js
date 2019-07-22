@@ -1,4 +1,4 @@
 import chai from "chai";
 
 const { assert } = chai;
-export const { isTrue, isFalse, isUndefined } = assert;
+export const { isTrue, isFalse, isUndefined, isNull } = assert;

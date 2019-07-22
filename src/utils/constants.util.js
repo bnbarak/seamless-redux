@@ -11,4 +11,5 @@ export const ACTION_TYPES_NAMES = keymirror({
   UPDATE_OBJECT_BY_KEY: null,
   TOGGLE_BOOLEAN: null,
   PUSH_DATA: null,
+  NEW_ERROR: null,
 });
