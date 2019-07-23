@@ -1,5 +1,7 @@
 import SeamlessRedux from 'Classes/EasyRedux.class';
-import reducer from './Reducer';
-import * as selectors from './Selector';
+import * as reducers from './reducers';
+import * as selectors from './selectors/data.selectors';
 
-export { reducer, selectors, SeamlessRedux };
+export {
+  reducers, selectors, SeamlessRedux,
+};

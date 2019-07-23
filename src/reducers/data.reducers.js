@@ -2,8 +2,6 @@ import { ACTION_TYPES_NAMES } from 'Utils/constants.util';
 import combineData from 'Utils/combainData.util';
 
 const {
-  START_FETCH,
-  FINISH_FETCH,
   NEW_DATA,
   INIT_ENTITY,
   MERGE_DATA,
@@ -11,12 +9,12 @@ const {
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
   PUSH_DATA,
-	NEW_ERROR
+  NEW_ERROR,
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
   const {
-    type, data, entityName, key, isLoading, isError
+    type, data, entityName, key,
   } = action;
 
   if (type === INIT_ENTITY) {
@@ -30,66 +28,46 @@ const entityReducer = (state = {}, action) => {
     return state;
   }
 
-  if (type === START_FETCH) {
-    const newState = state;
-    newState[entityName].isLoading = true;
-    return { ...newState };
-  }
-
   if (type === RESET_ENTITY) {
     const newState = state;
-    newState[entityName].isLoading = isLoading;
-    newState[entityName].data = data;
-    return { ...newState };
-  }
-
-  if (type === FINISH_FETCH) {
-    const newState = state;
-    newState[entityName].isLoading = false;
+    newState[entityName] = data;
     return { ...newState };
   }
 
   if (type === NEW_DATA) {
     const newState = state;
-    newState[entityName].data = data;
+    newState[entityName] = data;
     return { ...newState };
   }
 
   if (type === MERGE_DATA) {
     const newState = state;
-    const oldData = newState[entityName].data;
-    newState[entityName].data = combineData(oldData, data);
+    const oldData = newState[entityName];
+    newState[entityName] = combineData(oldData, data);
     return { ...newState };
   }
 
   if (type === UPDATE_OBJECT_BY_KEY) {
     const newState = state;
-    const oldData = newState[entityName].data;
+    const oldData = newState[entityName];
     if (oldData) {
-      newState[entityName].data[key] = data;
+      newState[entityName][key] = data;
     }
     return { ...newState };
   }
 
   if (type === TOGGLE_BOOLEAN) {
     const newState = state;
-    const oldData = newState[entityName].data;
+    const oldData = newState[entityName];
     if (typeof oldData === 'boolean') {
-      newState[entityName].data = !oldData;
+      newState[entityName] = !oldData;
     }
     return { ...newState };
   }
 
   if (type === PUSH_DATA) {
     const newState = state;
-    newState[entityName].data.push(data);
-    return { ...newState };
-  }
-
-  if (type === NEW_ERROR) {
-    const newState = state;
-    newState[entityName].error = data;
-    newState[entityName].isError = isError;
+    newState[entityName].push(data);
     return { ...newState };
   }
 

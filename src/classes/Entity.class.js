@@ -26,26 +26,18 @@ class Entity {
     this.init();
   }
 
-  get defaultState() {
-    const { isLoading, defaultData, isError } = this;
-    return {
-      isLoading,
-      isError,
-      data: defaultData,
-    };
-  }
-
   reset(isLoading = this.isLoading) {
     const { dispatch, name, defaultData } = this;
     resetAction(name, defaultData, isLoading, dispatch);
   }
 
   init() {
-    const { options } = this;
-    if (options.isLoading) this.isLoading = options.defaultIsLoading;
+    const { options, defaultData } = this;
+    let isLoading;
+    if (options.isLoading) isLoading = options.defaultIsLoading;
     const { dispatch, name } = this;
-    const defaultData = this.defaultState;
-    initAction(name, defaultData, dispatch);
+    const data = defaultData;
+    initAction(name, data, isLoading, dispatch);
   }
 
   start() {

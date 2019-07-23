@@ -5,7 +5,7 @@ export default (entityName, data, isError, dispatch) => {
     type: ACTION_TYPES_NAMES.NEW_ERROR,
     entityName,
     data,
-		isError
+    isError,
   };
 
   dispatch(action);

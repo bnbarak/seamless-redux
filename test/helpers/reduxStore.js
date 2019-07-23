@@ -1,13 +1,16 @@
-import { createStore, combineReducers } from "redux";
-import entityReducer from '../../src/Reducer';
-import thunk from "redux-thunk";
+import { createStore, combineReducers } from 'redux';
+import entitiesDataReducer from '../../src/reducers/data.reducers';
+import loadingReducers from '../../src/reducers/loading.reducers';
+import errorReducers from '../../src/reducers/error.reducers';
 
 const store = createStore(combineReducers({
-  entities: entityReducer
+  entitiesData: entitiesDataReducer,
+  entitiesLoading: loadingReducers,
+  entitiesError: errorReducers,
 }));
 
-export default () => {
-  return createStore(combineReducers({
-		entities: entityReducer
-	}))
-};
+export default () => createStore(combineReducers({
+  entitiesData: entitiesDataReducer,
+  entitiesLoading: loadingReducers,
+	entitiesError: errorReducers,
+}));

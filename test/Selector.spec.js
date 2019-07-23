@@ -1,22 +1,21 @@
-import _ from "lodash";
-import createStore from "./helpers/reduxStore";
+import _ from 'lodash';
+import createStore from './helpers/reduxStore';
 import {
-  selectEntity,
-  selectEntityData,
-  selectEntityIsLoading,
-  selectItemFromEntityData
-} from "../src/Selector";
-import { isTrue, isFalse } from "./helpers/testHelpers";
-import EasyRedux from "../src/classes/EasyRedux.class";
+  selectData,
+  selectKeyInData,
+} from '../src/selectors/data.selectors';
+import { isTrue } from './helpers/testHelpers';
+import EasyRedux from '../src/classes/EasyRedux.class';
+import { selectLoading } from '../src/selectors/loading.selectors';
 
-const someEntity = "someEntity";
-const key = "key";
-const value = "value";
+const someEntity = 'someEntity';
+const key = 'key';
+const value = 'value';
 const defaultState = {
-  [key]: value
+  [key]: value,
 };
 
-describe("Selector", () => {
+describe('Selector', () => {
   let store;
   let easy;
 
@@ -27,29 +26,29 @@ describe("Selector", () => {
     easy.createEntity(someEntity, defaultState);
   });
 
-  it("should select default state", () => {
+  it('should select default state', () => {
     const state = store.getState();
-    const entity = selectEntity(state, someEntity);
-    const { data, isLoading } = entity;
+    const data = selectData(state, someEntity);
+    const isLoading = selectLoading(state, someEntity);
     isTrue(_.isEqual(data, defaultState));
-		isTrue(isLoading);
+    isTrue(isLoading);
   });
 
-  it("should select default data", () => {
+  it('should select default data', () => {
     const state = store.getState();
-    const data = selectEntityData(state, someEntity);
+    const data = selectData(state, someEntity);
     isTrue(_.isEqual(data, defaultState));
   });
 
-  it("should select default isLoading", () => {
+  it('should select default isLoading', () => {
     const state = store.getState();
-    const isLoading = selectEntityIsLoading(state, someEntity);
-		isTrue(isLoading);
+    const isLoading = selectLoading(state, someEntity);
+    isTrue(isLoading);
   });
 
-  it("should select data ny key", () => {
+  it('should select data by key', () => {
     const state = store.getState();
-    const data = selectItemFromEntityData(state, someEntity, key);
+    const data = selectKeyInData(state, someEntity, key);
     isTrue(data === value);
   });
 });
