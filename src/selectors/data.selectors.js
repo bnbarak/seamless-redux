@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { get } from 'lodash';
 
-const getDataEntities = state => state.entitiesData;
+const getDataEntities = state => state.dataEntities;
 
 export const selectData = (state, entityName) =>
   createSelector(
@@ -14,4 +14,3 @@ export const selectKeyInData = (state, entityName, key) =>
     [selectData],
     entities => get(entities, key),
   )(state, entityName);
-

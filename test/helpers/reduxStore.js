@@ -4,13 +4,13 @@ import loadingReducers from '../../src/reducers/loading.reducers';
 import errorReducers from '../../src/reducers/error.reducers';
 
 const store = createStore(combineReducers({
-  entitiesData: entitiesDataReducer,
-  entitiesLoading: loadingReducers,
+	dataEntities: entitiesDataReducer,
+  loadingEntities: loadingReducers,
   entitiesError: errorReducers,
 }));
 
 export default () => createStore(combineReducers({
-  entitiesData: entitiesDataReducer,
-  entitiesLoading: loadingReducers,
+	dataEntities: entitiesDataReducer,
+  loadingEntities: loadingReducers,
 	entitiesError: errorReducers,
 }));

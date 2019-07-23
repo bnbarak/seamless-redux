@@ -30,31 +30,31 @@ describe('Entity class', () => {
   });
 
   it('should init the entity with default data and loading to true', () => {
-    const { entitiesData, entitiesLoading } = store.getState();
-    const data = entitiesData[entityName];
-    const isLoading = entitiesLoading[entityName];
+    const { dataEntities, loadingEntities } = store.getState();
+    const data = dataEntities[entityName];
+    const isLoading = loadingEntities[entityName];
     isTrue(_.isEqual(data, defaultState));
     isTrue(isLoading);
   });
 
   it('should start fetching change loading state to true', () => {
     entity.start();
-    const { entitiesLoading } = store.getState();
-    const isLoading = entitiesLoading[entityName];
+    const { loadingEntities } = store.getState();
+    const isLoading = loadingEntities[entityName];
     isTrue(isLoading);
   });
 
   it('should finish fetching change loading state to false', () => {
     entity.finish();
-    const { entitiesLoading } = store.getState();
-    const isLoading = entitiesLoading[entityName];
+    const { loadingEntities } = store.getState();
+    const isLoading = loadingEntities[entityName];
     isFalse(isLoading);
   });
 
   it('should replace the data with new data', () => {
     entity.newData(replaceDataObject);
-    const { entitiesData } = store.getState();
-    const data = entitiesData[entityName];
+    const { dataEntities } = store.getState();
+    const data = dataEntities[entityName];
     isTrue(_.isEqual(data, replaceDataObject));
   });
 
@@ -62,8 +62,8 @@ describe('Entity class', () => {
     describe('For [Objects]', () => {
       it('should merge new data with old data [objects]', () => {
         entity.mergeData(mergeDataObject);
-        const { entitiesData } = store.getState();
-        const data = entitiesData[entityName];
+        const { dataEntities } = store.getState();
+        const data = dataEntities[entityName];
         const merge = _.merge(mergeDataObject, replaceDataObject);
         isTrue(_.isEqual(data, merge));
       });
@@ -71,8 +71,8 @@ describe('Entity class', () => {
       it('should replace the data with new data by a key', () => {
         const newData = 'x';
         entity.updateObjectByKey(key, newData);
-        const { entitiesData } = store.getState();
-        const data = entitiesData[entityName];
+        const { dataEntities } = store.getState();
+        const data = dataEntities[entityName];
         isTrue(_.isEqual(data[key], newData));
       });
     });
@@ -81,8 +81,8 @@ describe('Entity class', () => {
       before(() => entity.newData(mergeDataArr));
       it('should merge new data with old data [objects]', () => {
         entity.mergeData(replaceDataArr);
-        const { entitiesData } = store.getState();
-        const data = entitiesData[entityName];
+        const { dataEntities } = store.getState();
+        const data = dataEntities[entityName];
         const merge = mergeDataArr.concat(replaceDataArr);
         isTrue(_.isEqual(data, merge));
       });
@@ -90,8 +90,8 @@ describe('Entity class', () => {
       it('should push new data', () => {
         const newData = 'x';
         entity.pushData(newData);
-        const { entitiesData } = store.getState();
-        const data = entitiesData[entityName];
+        const { dataEntities } = store.getState();
+        const data = dataEntities[entityName];
         const lastElement = data[data.length - 1];
         isTrue(newData === lastElement);
       });
@@ -101,8 +101,8 @@ describe('Entity class', () => {
       before(() => entity.newData(false));
       it('should replace the data with new data by a key', () => {
         entity.toggleBoolean();
-        const { entitiesData } = store.getState();
-        const data = entitiesData[entityName];
+        const { dataEntities } = store.getState();
+        const data = dataEntities[entityName];
         isTrue(data);
       });
     });
@@ -132,10 +132,14 @@ describe('Entity class', () => {
 
     it('should reset the data', () => {
       entity.reset();
-      const { entitiesData } = store.getState();
-      const data = entitiesData[entityName];
+      const { dataEntities } = store.getState();
+      const data = dataEntities[entityName];
       isTrue(_.isEqual(data, defaultState));
     });
+
+    it('should reset loading');
+
+    it('should reset error');
   });
 
   describe('entity options', () => {
@@ -153,8 +157,8 @@ describe('Entity class', () => {
     });
 
     it('should have isLoading set to false by default', () => {
-      const { entitiesLoading } = store.getState();
-      const isLoading = entitiesLoading[entityName];
+      const { loadingEntities } = store.getState();
+      const isLoading = loadingEntities[entityName];
       isFalse(isLoading);
     });
   });

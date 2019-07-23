@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { get } from 'lodash';
 
 
-const getErrorEntities = state => state.entitiesError;
+const getErrorEntities = state => state.errorEntities;
 
 export const selectError = (state, entityName) =>
   createSelector(
@@ -10,14 +10,15 @@ export const selectError = (state, entityName) =>
     entities => get(entities, entityName),
   )(state);
 
-export const selectIsError = state =>
+export const selectIsError = (state, entityName) =>
   createSelector(
     [selectError],
-    entities => get(entities, 'isError'),
-  )(state);
+    error => get(error, 'isError'),
+  )(state, entityName);
 
-export const selectErrorMessage = state =>
-  createSelector(
-    [selectError],
-    entities => get(entities, 'data'),
-  )(state);
+
+export const selectErrorData = (state, entityName) =>
+	createSelector(
+		[selectError],
+		error => get(error, 'data'),
+	)(state, entityName);
