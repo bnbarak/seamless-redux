@@ -18,7 +18,7 @@ export const selectIsError = (state, entityName) =>
 
 
 export const selectErrorData = (state, entityName) =>
-	createSelector(
-		[selectError],
-		error => get(error, 'data'),
-	)(state, entityName);
+  createSelector(
+    [selectError],
+    error => get(error, 'data'),
+  )(state, entityName);

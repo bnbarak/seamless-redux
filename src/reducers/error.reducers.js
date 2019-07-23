@@ -1,11 +1,6 @@
 import { ACTION_TYPES_NAMES } from 'Utils/constants.util';
-import combineData from 'Utils/combainData.util';
 
-const {
-  INIT_ENTITY,
-  RESET_ENTITY,
-  NEW_ERROR,
-} = ACTION_TYPES_NAMES;
+const { INIT_ENTITY, RESET_ENTITY, NEW_ERROR } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
   const {
@@ -15,7 +10,7 @@ const entityReducer = (state = {}, action) => {
   if (type === INIT_ENTITY) {
     const newState = state;
     newState[entityName] = {
-		  isError: false,
+      isError: false,
       data: null,
     };
     return { ...newState };

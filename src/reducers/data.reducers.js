@@ -9,7 +9,6 @@ const {
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
   PUSH_DATA,
-  NEW_ERROR,
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
