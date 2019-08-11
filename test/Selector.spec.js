@@ -21,8 +21,7 @@ describe('Selector', () => {
 
   before(() => {
     store = createStore();
-    const { dispatch } = store;
-    easy = new EasyRedux(dispatch);
+    easy = new EasyRedux(store);
     easy.createEntity(someEntity, defaultState);
   });
 

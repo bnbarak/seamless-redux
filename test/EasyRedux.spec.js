@@ -1,14 +1,43 @@
-// import EasyRedux from "../src/classes/EasyRedux";
-// import Entity from "../src/classes/Entity";
-// import { isTrue } from "./helpers/testHelpers";
-//
-// const entityName = "entity";
-// let easyRedux = new EasyRedux();
-//
-// describe("EasyRedux class", () => {
-//   it("should test createEntity", () => {
-//     easyRedux.createEntity(entityName);
-//     const entity = easyRedux.getEntity(entityName);
-//     isTrue(entity instanceof Entity);
-//   });
-// });
+import _ from 'lodash';
+import EasyRedux from 'Classes/EasyRedux.class';
+import Entity from 'Classes/Entity.class';
+import createStore from './helpers/reduxStore';
+import { isTrue } from './helpers/testHelpers';
+
+const initialState = 'test';
+const entityName = 'entity';
+let seamless;
+let store;
+
+describe('EasyRedux class', () => {
+  before(() => {
+    store = createStore();
+    seamless = new EasyRedux(store);
+  });
+
+  it('should create an instance', () => isTrue(seamless instanceof EasyRedux));
+
+  it('should test createEntity', () => {
+    seamless.createEntity(entityName);
+    const entity = seamless.getEntity(entityName);
+    isTrue(entity instanceof Entity);
+  });
+
+  describe('test get state', () => {
+    before(() => {
+      const entity = seamless.getEntity(entityName);
+      entity.newData(initialState);
+    });
+
+    it('should get the state', () => {
+      const { dataEntities, loadingEntities, entitiesError } = seamless.state;
+      isTrue(_.isEqual(dataEntities, { [entityName]: initialState }));
+      isTrue(_.isEqual(loadingEntities, { [entityName]: true }));
+      isTrue(
+        _.isEqual(entitiesError, {
+          [entityName]: { isError: false, data: null },
+        }),
+      );
+    });
+  });
+});

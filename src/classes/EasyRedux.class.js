@@ -1,7 +1,9 @@
 import Entity from 'Classes/Entity.class';
 
 class EasyRedux {
-  constructor(dispatch) {
+  constructor(store) {
+    const { dispatch } = store;
+    this.store = store;
     this.dispatch = dispatch;
     this.entities = {};
   }
@@ -15,6 +17,11 @@ class EasyRedux {
     const entity = new Entity(entityName, defaultState, dispatch, userOptions);
     this.entities[entityName] = entity;
     return entity;
+  }
+
+  get state() {
+    const { store } = this;
+    return store.getState();
   }
 }
 
