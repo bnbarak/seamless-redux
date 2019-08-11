@@ -3,7 +3,7 @@
 Easy to say, hard to write.
 `seamless-redux` facilitate the separation `React` and `Redux` by eliminating the `dispatch` method and the overhead of writing repetitive `Redux` code.
 
-## Setup 
+# Setup 
 1. Combine reducers
 ```javascript
 // Root Reducer
