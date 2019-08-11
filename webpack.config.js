@@ -6,8 +6,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./lib"),
     filename: "index.js",
-    library: "",
-    libraryTarget: "commonjs"
+    library: "seamless-redux",
+    libraryTarget: "umd",
+		umdNamedDefine: true,
   },
   module: {
     rules: [

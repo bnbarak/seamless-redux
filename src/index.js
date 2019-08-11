@@ -4,7 +4,5 @@ import * as reducers from './reducers';
 
 export { reducers, selectors, SeamlessRedux };
 
-export default (dispatch) => {
-  const seamless = new SeamlessRedux(dispatch);
-  return seamless;
-};
+export default (store) => new SeamlessRedux(store);
+

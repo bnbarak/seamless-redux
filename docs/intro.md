@@ -1,14 +1,12 @@
 # Motivation
 `React` should render DOM elements, and `redux` should handle state management.
 Easy to say, hard to write.
-`seamless-redux` aims to bring clear separation of entities and reduce the overhead of writing `redux` architecture.
-
-# Example
-Fetch user information:
+`seamless-redux` aims to bring clear separation of entities and reduce the overhead of writing `redux` code.
 
 ## Setup 
 1. Combine reducers
 ```javascript
+// Root Reducer
 import { combineReducers } from 'redux';
 import { reducers as entities } from 'seamless-redux';
 
@@ -19,6 +17,7 @@ export default combineReducers({
 
 2. Pass the store object
 ```javascript
+// App.js
 import { createStore } from 'redux';
 import Seamless from 'seamless-redux';
 import rootReducer from './reducers';
@@ -26,12 +25,13 @@ const store = createStore(
   rootReducer
 );
 
-export const seamless = Seamless.default(store);
+export const seamless = Seamless(store);
 createMyEntities(seamless);
 
 ```
-3. Create entities
+3. Create a user entity
 ```javascript
+// entities.js
 const createMyEntities = (seamless) => {
   seamless.createEntity("User", {}); // Set default state to {}
 };
