@@ -5,7 +5,7 @@ import {
   selectKeyInData,
 } from '../src/selectors/data.selectors';
 import { isTrue } from './helpers/testHelpers';
-import EasyRedux from '../src/classes/EasyRedux.class';
+import EasyRedux from '../src/classes/SeamlessRedux.class';
 import { selectLoading } from '../src/selectors/loading.selectors';
 
 const someEntity = 'someEntity';

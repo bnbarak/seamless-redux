@@ -1,4 +1,4 @@
-import SeamlessRedux from 'Classes/EasyRedux.class';
+import SeamlessRedux from 'Classes/SeamlessRedux.class';
 import selectors from './selectors';
 import * as reducers from './reducers';
 

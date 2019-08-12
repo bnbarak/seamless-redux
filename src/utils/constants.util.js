@@ -9,6 +9,7 @@ export const ACTION_TYPES_NAMES = keymirror({
   NEW_DATA: null,
   MERGE_DATA: null,
   UPDATE_OBJECT_BY_KEY: null,
+  FIND_IN_ARRAY_AND_UPDATE: null,
   TOGGLE_BOOLEAN: null,
   PUSH_DATA: null,
   NEW_ERROR: null,

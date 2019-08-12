@@ -9,6 +9,7 @@ import updateObjectByKey from 'Actions/updateObjectByKey.action';
 import toggleBoolean from 'Actions/toggleBoolean.action';
 import pushData from 'Actions/pushData.action';
 import newError from 'Actions/newError.action';
+import findInArrayAndUpdate from 'Actions/findInArrayAndUpdate.action';
 
 class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
@@ -83,6 +84,11 @@ class Entity {
   resetError() {
     const { dispatch, name } = this;
     newError(name, null, false, dispatch);
+  }
+
+	findInArrayAndUpdate(data, func) {
+		const { dispatch, name } = this;
+		findInArrayAndUpdate(name, func, data, dispatch);
   }
 }
 

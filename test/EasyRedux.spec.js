@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import EasyRedux from 'Classes/EasyRedux.class';
+import EasyRedux from 'Classes/SeamlessRedux.class';
 import Entity from 'Classes/Entity.class';
 import createStore from './helpers/reduxStore';
 import { isTrue } from './helpers/testHelpers';

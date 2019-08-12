@@ -197,4 +197,27 @@ describe('Entity class', () => {
       isNull(data);
     });
   });
+
+  describe("findInArrayAndUpdate", () => {
+    const oldData = 2;
+    const newData = 3;
+		const defaultState = [1, oldData];
+		let entity;
+		let store;
+
+    before(() => {
+			store = createStore();
+			const { dispatch } = store;
+			entity = new Entity(entityName, defaultState, dispatch);
+			const func = (item) => item === oldData;
+			entity.findInArrayAndUpdate(newData, func);
+    });
+
+    it("should update the second elements in the array", () => {
+			const { dataEntities } = store.getState();
+			const data = dataEntities[entityName];
+			const [first, second] = data;
+			isTrue(_.isEqual(newData, second));
+    })
+  })
 });

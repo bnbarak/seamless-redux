@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { ACTION_TYPES_NAMES } from 'Utils/constants.util';
 import combineData from 'Utils/combainData.util';
 
@@ -9,11 +10,12 @@ const {
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
   PUSH_DATA,
+	FIND_IN_ARRAY_AND_UPDATE
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
   const {
-    type, data, entityName, key,
+    type, data, entityName, key, func,
   } = action;
 
   if (type === INIT_ENTITY) {
@@ -69,6 +71,13 @@ const entityReducer = (state = {}, action) => {
     newState[entityName].push(data);
     return { ...newState };
   }
+
+	if (type === FIND_IN_ARRAY_AND_UPDATE) {
+		const newState = state;
+		const index = _.findIndex(newState[entityName], func);
+		newState[entityName][index] = data;
+		return { ...newState };
+	}
 
   return state;
 };
