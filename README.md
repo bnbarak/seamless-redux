@@ -25,9 +25,9 @@ export const seamless = Seamless(store); // pass the redux store
 The `redux` store will have three new subtrees
 ```json
 {
-  dataEntities: {},
-  loadingEntities: {},
-  errorEntities: {},
+  "dataEntities": {},
+  "loadingEntities": {},
+  "errorEntities": {},
   ...
 }
 ```
