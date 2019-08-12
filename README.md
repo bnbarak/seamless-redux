@@ -136,7 +136,7 @@ myEntity.newData("new data")
 #### `myEntity.merge(data)`
 Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
 ```javascript
-myEntity.merge({b: b})
+myEntity.merge({b: 2})
 ```
 ```diff
 {
@@ -163,6 +163,18 @@ myEntity.updateObjectByKey({b: "new data"})
 
 #### `myEntity.findInArrayAndUpdate(data, func)`
 Will search an array with the search function and will replaced a single find with data.
+```javascript
+const func = (item) => item === 2;
+myEntity.findInArrayAndUpdate("new data", func)
+```
+```diff
+{
+	"dataEntities": {
+-		"MyEntity": [1, 2, 3, 2],
++		"MyEntity": [1, "new data", 3, "new data"]	
+	}
+}
+```
 
 #### `myEntity.toggleBoolean()`
 If the data is a boolean, will toggle `true -> false` and `false -> true`.
