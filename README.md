@@ -178,6 +178,26 @@ myEntity.findInArrayAndUpdate("new data", func)
 
 #### `myEntity.toggleBoolean()`
 If the data is a boolean, will toggle `true -> false` and `false -> true`.
+```javascript
+myEntity.toggleBoolean()
+```
+```diff
+{
+	"dataEntities": {
+-		"MyEntity": false,
++		"MyEntity": true	
+	}
+}
+```
+or
+```diff
+{
+	"dataEntities": {
+-		"MyEntity": true,
++		"MyEntity": false	
+	}
+}
+```
 
 #### `myEntity.pushData(item)`
 If the data is an array, will push an item to the array.
