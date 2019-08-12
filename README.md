@@ -73,16 +73,16 @@ const myEntity = seamless.getEntity("MyEntity");
 Will yield
 ```json
 {
-  dataEntities: {
-    MyEntity: {},
+  "dataEntities": {
+    "MyEntity": {},
   },
-  loadingEntities: {
-    MyEntity: true,
+  "loadingEntities": {
+    "MyEntity": true,
   },
-  errorEntities: {
-    MyEntity: {
-      isError: false,
-      data: null
+  "errorEntities": {
+    "MyEntity": {
+      "isError": false,
+      "data": null
     }
   }
 }
@@ -100,7 +100,7 @@ Set the loading state to true
 +       "MyEntity": true,
     }: 
 }
-
+```
 
 #### `myEntity.finish()`
 Set the loading state to false
