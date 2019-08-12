@@ -315,6 +315,13 @@ Select the error message/data for an entity
 #### Use Selectors
 
 ```javascript
+import { selectors } from 'seamless-redux';
+
+const {
+  selectData, selectLoading, selectIsError, selectErrorData, selectKeyInData
+} = selectors;
+
+
 class MyComponent extends PureComponent {
   render() {
     const { isLoading, isError, errorMessage, data, someProperty } = this.props;
