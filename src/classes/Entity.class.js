@@ -14,7 +14,7 @@ import findInArrayAndUpdate from 'Actions/findInArrayAndUpdate.action';
 class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
     const defaultOptions = {
-      isLoading: true,
+      enableIsLoading: true,
       defaultIsLoading: true,
     };
     const options = _.extend(defaultOptions, userOptions);
@@ -35,7 +35,7 @@ class Entity {
   init() {
     const { options, defaultData } = this;
     let isLoading;
-    if (options.isLoading) isLoading = options.defaultIsLoading;
+    if (options.enableIsLoading) isLoading = options.defaultIsLoading;
     const { dispatch, name } = this;
     const data = defaultData;
     initAction(name, data, isLoading, dispatch);
@@ -86,9 +86,9 @@ class Entity {
     newError(name, null, false, dispatch);
   }
 
-	findInArrayAndUpdate(data, func) {
-		const { dispatch, name } = this;
-		findInArrayAndUpdate(name, func, data, dispatch);
+  findInArrayAndUpdate(data, func) {
+    const { dispatch, name } = this;
+    findInArrayAndUpdate(name, func, data, dispatch);
   }
 }
 

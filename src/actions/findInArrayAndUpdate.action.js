@@ -5,7 +5,7 @@ export default (entityName, func, data, dispatch) => {
     type: ACTION_TYPES_NAMES.FIND_IN_ARRAY_AND_UPDATE,
     entityName,
     data,
-		func,
+    func,
   };
 
   dispatch(action);

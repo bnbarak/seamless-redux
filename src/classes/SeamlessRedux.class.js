@@ -1,6 +1,6 @@
 import Entity from 'Classes/Entity.class';
 
-class EasyRedux {
+class SeamlessRedux {
   constructor(store) {
     const { dispatch } = store;
     this.store = store;
@@ -25,4 +25,4 @@ class EasyRedux {
   }
 }
 
-export default EasyRedux;
+export default SeamlessRedux;

@@ -24,9 +24,35 @@ export const seamless = Seamless(store); // pass the redux store
 
 
 # API
-## Entity
-`Class Seamless`
- * Constractor(store)
-    
-    - store: redux store object
-   
+#### Initialization
+Create a seamless object right after the redux store.
+```javascript
+const store = createStore(rootReducer); // create the redux-store
+export const seamless = Seamless(store);
+```
+
+#### Createt Entity
+
+```javascript
+const defaultState = {};
+const userOptions = {
+	defaultIsLoading: true,
+}
+seamless.createEntity(entityName, defaultState, userOptions)
+```
+* `entityName: String`- Name of the entity
+* `defaultState: Any` - Default state of the entity
+* `userOptions: Object` - Additional options
+    - `defaultIsLoading: Boolean` - default loading state. Default: *true*
+
+#### Get Entity
+```javascript
+seamless.getEntity(entityName)
+```
+* `entityName: String` Name of the entity
+
+#### Get State
+```javascript
+seamless.state
+```
+Get the state. Simply invoke `store.getState()`

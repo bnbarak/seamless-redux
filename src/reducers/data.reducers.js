@@ -10,7 +10,7 @@ const {
   TOGGLE_BOOLEAN,
   RESET_ENTITY,
   PUSH_DATA,
-	FIND_IN_ARRAY_AND_UPDATE
+  FIND_IN_ARRAY_AND_UPDATE,
 } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
@@ -72,12 +72,12 @@ const entityReducer = (state = {}, action) => {
     return { ...newState };
   }
 
-	if (type === FIND_IN_ARRAY_AND_UPDATE) {
-		const newState = state;
-		const index = _.findIndex(newState[entityName], func);
-		newState[entityName][index] = data;
-		return { ...newState };
-	}
+  if (type === FIND_IN_ARRAY_AND_UPDATE) {
+    const newState = state;
+    const index = _.findIndex(newState[entityName], func);
+    newState[entityName][index] = data;
+    return { ...newState };
+  }
 
   return state;
 };
