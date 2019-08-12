@@ -40,30 +40,23 @@ const store = createStore(rootReducer); // create the redux-store
 export const seamless = Seamless(store);
 ```
 
-#### Create Entity
+### `seamless.createEntity(entityName, defaultState, userOptions)`
 
 ```javascript
 const defaultState = {};
 const userOptions = {
 	defaultIsLoading: true,
 }
-seamless.createEntity(entityName, defaultState, userOptions)
 ```
 * `entityName: String` **[required]**  - Name of the entity
 * `defaultState: Any` - Default state of the entity. Default `{}`
 * `userOptions: Object` - Additional options
     - `defaultIsLoading: Boolean` - default loading state. Default: *true*
 
-#### Get Entity
-```javascript
-seamless.getEntity(entityName)
-```
+### `seamless.getEntity(entityName)`
 * `entityName: String` Name of the entity
 
-#### Get State
-```javascript
-seamless.state  
-```
+### `seamless.state`
 Get the state. Simply invoke `store.getState()`
 
 ## Manage State
