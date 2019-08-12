@@ -93,6 +93,9 @@ Reset the data, loading, and error, to the default values.
 
 #### `myEntity.start()`
 Set the loading state to true
+```javascript
+myEntity.start()
+```
 ```diff
 {
     "loadingEntities": {
@@ -104,6 +107,9 @@ Set the loading state to true
 
 #### `myEntity.finish()`
 Set the loading state to false
+```javascript
+myEntity.finish()
+```
 ```diff
 {
     "loadingEntities": {
@@ -115,8 +121,10 @@ Set the loading state to false
 
 #### `myEntity.newData(data)`
 Replace the old data with new data
-```diff
+```javascript
 myEntity.newData("new data")
+```
+```diff
 {
 	"dataEntities": {
 -		"MyEntity": "old data",
@@ -127,8 +135,10 @@ myEntity.newData("new data")
 
 #### `myEntity.merge(data)`
 Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
-```diff
+```javascript
 myEntity.merge({b: b})
+```
+```diff
 {
 	"dataEntities": {
 -		"MyEntity": {"a": 1},
@@ -139,8 +149,10 @@ myEntity.merge({b: b})
 
 #### `myEntity.updateObjectByKey(key, data)`
 If the data is an object, change the data under a key.
-```diff
+```javascript
 myEntity.updateObjectByKey({b: "new data"})
+```
+```diff
 {
 	"dataEntities": {
 -		"MyEntity": {"a": "just data", "b": "old data"},
