@@ -24,7 +24,7 @@ export const seamless = Seamless(store); // pass the redux store
 
 
 # API
-#### Initialization
+## Initialization
 Create a seamless object right after the redux store.
 ```javascript
 const store = createStore(rootReducer); // create the redux-store
@@ -56,3 +56,11 @@ seamless.getEntity(entityName)
 seamless.state
 ```
 Get the state. Simply invoke `store.getState()`
+
+## Manage State
+#### Reset
+```javascript
+const myEntity = seamless.getEntity("MyEntity");
+myEntit.reset();
+```
+Reset the data, loading, and error, to the default values.
