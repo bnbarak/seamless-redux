@@ -116,14 +116,25 @@ Set the loading state to false
 #### `myEntity.newData(data)`
 Replace the old data with new data
 ```diff
-"dataEntities": {
--	"MyEntity": "oldData",
-+	"MyEntity": "newData"	
-  }
+{
+	"dataEntities": {
+-		"MyEntity": "oldData",
++		"MyEntity": "newData"	
+	}
+}
 ```
 
 #### `myEntity.merge(data)`
 Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
+```diff
+myEntity.merge({b: b})
+{
+	"dataEntities": {
+-		"MyEntity": {"a": 1},
++		"MyEntity": {"a": 1, "b": 2}	
+	}
+}
+```
 
 #### `myEntity.updateObjectByKey(key, data)`
 If the data is an object, change the data under a key.
