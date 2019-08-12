@@ -58,9 +58,8 @@ seamless.state
 Get the state. Simply invoke `store.getState()`
 
 ## Manage State
-#### Reset
 ```javascript
 const myEntity = seamless.getEntity("MyEntity");
-myEntit.reset();
 ```
+#### `myEntit.reset()`
 Reset the data, loading, and error, to the default values.
