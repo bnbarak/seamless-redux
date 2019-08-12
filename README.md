@@ -95,9 +95,9 @@ Reset the data, loading, and error, to the default values.
 Set the loading state to true
 ```diff
 {
-    loadingEntities: {
--       MyEntity: false,
-+       MyEntity: true,
+    "loadingEntities": {
+-       "MyEntity": false,
++       "MyEntity": true,
     }: 
 }
 
@@ -106,9 +106,9 @@ Set the loading state to true
 Set the loading state to false
 ```diff
 {
-    loadingEntities: {
--       MyEntity: true,
-+       MyEntity: false,
+    "loadingEntities": {
+-       "MyEntity": true,
++      	"MyEntity": false,
     }: 
 }
 ```
