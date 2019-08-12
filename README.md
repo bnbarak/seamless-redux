@@ -88,10 +88,10 @@ Will yield
 }
 ```
 
-* ### `myEntity.reset()`
+### `myEntity.reset()`
 Reset the data, loading, and error, to the default values.
 
-* ### `myEntity.start()`
+### `myEntity.start()`
 Set the loading state to true
 ```javascript
 myEntity.start()
@@ -105,7 +105,7 @@ myEntity.start()
 }
 ```
 
-* ### `myEntity.finish()`
+### `myEntity.finish()`
 Set the loading state to false
 ```javascript
 myEntity.finish()
@@ -119,7 +119,7 @@ myEntity.finish()
 }
 ```
 
-* ### `myEntity.newData(data)`
+### `myEntity.newData(data)`
 Replace the old data with new data
 ```javascript
 myEntity.newData("new data")
@@ -133,7 +133,7 @@ myEntity.newData("new data")
 }
 ```
 
-* ### `myEntity.merge(data)`
+### `myEntity.merge(data)`
 Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
 ```javascript
 myEntity.merge({b: 2})
@@ -147,7 +147,7 @@ myEntity.merge({b: 2})
 }
 ```
 
-* ### `myEntity.updateObjectByKey(key, data)`
+### `myEntity.updateObjectByKey(key, data)`
 If the data is an object, change the data under a key.
 ```javascript
 myEntity.updateObjectByKey({b: "new data"})
@@ -161,7 +161,7 @@ myEntity.updateObjectByKey({b: "new data"})
 }
 ```
 
-* ### `myEntity.findInArrayAndUpdate(data, func)`
+### `myEntity.findInArrayAndUpdate(data, func)`
 Will search an array with the search function and will replaced a single find with data.
 ```javascript
 const func = (item) => item === 2;
@@ -176,7 +176,7 @@ myEntity.findInArrayAndUpdate("new data", func)
 }
 ```
 
-* ### `myEntity.toggleBoolean()`
+### `myEntity.toggleBoolean()`
 If the data is a boolean, will toggle `true -> false` and `false -> true`.
 ```javascript
 myEntity.toggleBoolean()
@@ -199,11 +199,11 @@ or
 }
 ```
 
-* ### `myEntity.pushData(item)`
+### `myEntity.pushData(item)`
 If the data is an array, will push an item to the array.
 
-* ### `myEntity.newError(data)`
+### `myEntity.newError(data)`
 Will set the `isError` flag to true, and will set the error message to data
 
-* ### `myEntity.resetError(data)`
+### `myEntity.resetError(data)`
 Will reset the `isError` to false and the error message to `null`.
