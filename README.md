@@ -22,6 +22,15 @@ const store = createStore(rootReducer);
 export const seamless = Seamless(store); // pass the redux store
 ```
 
+The `redux` store will have three new subtrees
+```json
+{
+  dataEntities: {},
+  loadingEntities: {},
+  errorEntities: {},
+  ...
+}
+```
 
 # API
 ## Initialization
@@ -61,11 +70,48 @@ Get the state. Simply invoke `store.getState()`
 ```javascript
 const myEntity = seamless.getEntity("MyEntity");
 ```
+Will yield
+```json
+{
+  dataEntities: {
+    MyEntity: {},
+  },
+  loadingEntities: {
+    MyEntity: true,
+  },
+  errorEntities: {
+    MyEntity: {
+      isError: false,
+      data: null
+    }
+  }
+}
+```
+
 #### `myEntity.reset()`
 Reset the data, loading, and error, to the default values.
 
 #### `myEntity.start()`
 Set the loading state to true
+```diff
+{
+    loadingEntities: {
+-       MyEntity: false,
++       MyEntity: true,
+    }: 
+}
+
+
+#### `myEntity.finish()`
+Set the loading state to false
+```diff
+{
+    loadingEntities: {
+-       MyEntity: true,
++       MyEntity: false,
+    }: 
+}
+```
 
 #### `myEntity.newData(data)`
 Replace the old data with new data
