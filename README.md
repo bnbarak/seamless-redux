@@ -116,10 +116,11 @@ Set the loading state to false
 #### `myEntity.newData(data)`
 Replace the old data with new data
 ```diff
+myEntity.newData("new data")
 {
 	"dataEntities": {
--		"MyEntity": "oldData",
-+		"MyEntity": "newData"	
+-		"MyEntity": "old data",
++		"MyEntity": "new data"	
 	}
 }
 ```
@@ -138,6 +139,15 @@ myEntity.merge({b: b})
 
 #### `myEntity.updateObjectByKey(key, data)`
 If the data is an object, change the data under a key.
+```diff
+myEntity.updateObjectByKey({b: "new data"})
+{
+	"dataEntities": {
+-		"MyEntity": {"a": "just data", "b": "old data"},
++		"MyEntity": {"a": "just data", "b": "new data"}	
+	}
+}
+```
 
 #### `myEntity.findInArrayAndUpdate(data, func)`
 Will search an array with the search function and will replaced a single find with data.
