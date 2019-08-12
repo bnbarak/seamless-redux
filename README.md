@@ -40,17 +40,17 @@ const store = createStore(rootReducer); // create the redux-store
 export const seamless = Seamless(store);
 ```
 
-### `seamless.createEntity(entityName, defaultState, userOptions)`
+### `seamless.createEntity(entityName, defaultState, options)`
 
 ```javascript
 const defaultState = {};
-const userOptions = {
+const v = {
 	defaultIsLoading: true,
 }
 ```
 * `entityName: String` **[required]**  - Name of the entity
 * `defaultState: Any` - Default state of the entity. Default `{}`
-* `userOptions: Object` - Additional options
+* `options: Object` - Additional options
     - `defaultIsLoading: Boolean` - default loading state. Default: *true*
 
 ### `seamless.getEntity(entityName)`
