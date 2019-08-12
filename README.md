@@ -53,7 +53,7 @@ seamless.getEntity(entityName)
 
 #### Get State
 ```javascript
-seamless.state
+seamless.state  
 ```
 Get the state. Simply invoke `store.getState()`
 
@@ -61,5 +61,32 @@ Get the state. Simply invoke `store.getState()`
 ```javascript
 const myEntity = seamless.getEntity("MyEntity");
 ```
-#### `myEntit.reset()`
+#### `myEntity.reset()`
 Reset the data, loading, and error, to the default values.
+
+#### `myEntity.start()`
+Set the loading state to true
+
+#### `myEntity.newData(data)`
+Replace the old data with new data
+
+#### `myEntity.merge(data)`
+Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
+
+#### `myEntity.updateObjectByKey(key, data)`
+If the data is an object, change the data under a key.
+
+#### `myEntity.findInArrayAndUpdate(data, func)`
+Will search an array with the search function and will replaced a single find with data.
+
+#### `myEntity.toggleBoolean()`
+If the data is a boolean, will toggle `true -> false` and `false -> true`.
+
+#### `myEntity.pushData(item)`
+If the data is an array, will push an item to the array.
+
+#### `myEntity.newError(data)`
+Will set the `isError` flag to true, and will set the error message to data
+
+#### `myEntity.resetError(data)`
+Will reset the `isError` to false and the error message to `null`.
