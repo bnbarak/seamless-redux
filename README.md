@@ -87,7 +87,7 @@ Reset the data, loading, and error, to the default values.
 ### `myEntity.start()`
 Set the loading state to true
 ```javascript
-myEntity.start()
+myEntity.start();
 ```
 ```diff
 {
@@ -101,7 +101,7 @@ myEntity.start()
 ### `myEntity.finish()`
 Set the loading state to false
 ```javascript
-myEntity.finish()
+myEntity.finish();
 ```
 ```diff
 {
@@ -115,7 +115,7 @@ myEntity.finish()
 ### `myEntity.newData(data)`
 Replace the old data with new data
 ```javascript
-myEntity.newData("new data")
+myEntity.newData("new data");
 ```
 ```diff
 {
@@ -129,7 +129,7 @@ myEntity.newData("new data")
 ### `myEntity.merge(data)`
 Merge old data with new data by [_.merge](https://lodash.com/docs/4.17.15#merge).
 ```javascript
-myEntity.merge({b: 2})
+myEntity.merge({b: 2});
 ```
 ```diff
 {
@@ -140,10 +140,10 @@ myEntity.merge({b: 2})
 }
 ```
 
-### `myEntity.updateObjectByKey(key, data)`
+### `myEntity.updateObjectByKey(data, key)`
 If the data is an object, change the data under a key.
 ```javascript
-myEntity.updateObjectByKey({b: "new data"})
+myEntity.updateObjectByKey("new data", "b");
 ```
 ```diff
 {
@@ -158,7 +158,7 @@ myEntity.updateObjectByKey({b: "new data"})
 Will search an array with the search function and will replaced a single find with data.
 ```javascript
 const func = (item) => item === 2;
-myEntity.findInArrayAndUpdate("new data", func)
+myEntity.findInArrayAndUpdate("new data", func);
 ```
 ```diff
 {
@@ -172,7 +172,7 @@ myEntity.findInArrayAndUpdate("new data", func)
 ### `myEntity.toggleBoolean()`
 If the data is a boolean, will toggle `true -> false` and `false -> true`.
 ```javascript
-myEntity.toggleBoolean()
+myEntity.toggleBoolean();
 ```
 ```diff
 {
@@ -195,7 +195,7 @@ or
 ### `myEntity.pushData(item)`
 If the data is an array, will push an item to the array.
 ```javascript
-myEntity.pushData("new data")
+myEntity.pushData("new data");
 ```
 ```diff
 {
@@ -209,7 +209,7 @@ myEntity.pushData("new data")
 ### `myEntity.newError(data)`
 Will set the `isError` flag to true, and will set the error message to `data`
 ```javascript
-myEntity.newError("error message")
+myEntity.newError("error message");
 ```
 ```diff
 {
@@ -227,7 +227,7 @@ myEntity.newError("error message")
 ### `myEntity.resetError()`
 Will reset the `isError` to false and the error message to `null`.
 ```javascript
-myEntity.resetError()
+myEntity.resetError();
 ```
 ```diff
 {

@@ -61,7 +61,7 @@ class Entity {
     mergeData(name, data, dispatch);
   }
 
-  updateObjectByKey(key, data) {
+  updateObjectByKey(data, key) {
     const { dispatch, name } = this;
     updateObjectByKey(name, key, data, dispatch);
   }

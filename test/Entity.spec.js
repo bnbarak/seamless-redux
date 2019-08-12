@@ -70,7 +70,7 @@ describe('Entity class', () => {
 
       it('should replace the data with new data by a key', () => {
         const newData = 'x';
-        entity.updateObjectByKey(key, newData);
+        entity.updateObjectByKey(newData, key);
         const { dataEntities } = store.getState();
         const data = dataEntities[entityName];
         isTrue(_.isEqual(data[key], newData));
