@@ -194,9 +194,50 @@ or
 
 ### `myEntity.pushData(item)`
 If the data is an array, will push an item to the array.
+```javascript
+myEntity.pushData("new data")
+```
+```diff
+{
+	"dataEntities": {
+-		"MyEntity": [1, 2, 3],
++		"MyEntity": [1, 2, 3, "new data"]	
+	}
+}
+```
 
 ### `myEntity.newError(data)`
-Will set the `isError` flag to true, and will set the error message to data
+Will set the `isError` flag to true, and will set the error message to `data`
+```javascript
+myEntity.newError("error message")
+```
+```diff
+{
+	"errorEntities": {
+		"MyEntity": {
+-            		isError: false,
+-            		data: null
++			isError: true,
++            		data: "error message"
+  		}
+	}
+}
+```
 
-### `myEntity.resetError(data)`
+### `myEntity.resetError()`
 Will reset the `isError` to false and the error message to `null`.
+```javascript
+myEntity.resetError()
+```
+```diff
+{
+	"errorEntities": {
+		"MyEntity": {
+-			isError: true,
+-            		data: "error message"
++            		isError: false,
++            		data: null
+  		}
+	}
+}
+```
