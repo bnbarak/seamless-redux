@@ -1,3 +1,4 @@
+# ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `WORK IN PROGRSS`
 # Motivation
 
 `React` should render DOM elements, and `Redux` should handle state management.
