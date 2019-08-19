@@ -26,12 +26,11 @@ See [seamless-redux](https://bnbarak.github.io/seamless-reduxk) documentations
 Creating an entity will initiate the data, loading, and error states.
 
 ```jsx
-import { seamless } from '../index'
 seamless.createEntity("User", {});
 ```
 
 
-> Component
+> React Component
 
 ```jsx
 import React from 'react';
@@ -54,7 +53,7 @@ class MyComponent extends React.PureComponent {
 }
 ```
 
-> mapStateToProps
+> selectors
 
 ```jsx
 const mapStateToProps = state => ({
@@ -77,7 +76,7 @@ export const authUserAction = (email, password) => {
   const userEntity = seamless.getEntity("User");
   userEntity.start();
   userEntity.resetError();
-  // Or just userEntity.reset();
+  // Or userEntity.reset();
 
   authApi(email, password)
     .then((response) => userEntity.newData(response.data))
