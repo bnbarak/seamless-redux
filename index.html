@@ -210,6 +210,9 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+      <div class="github">
+        <img src="images/github.png" alt="Github" /> <a href="https://github.com/bnbarak/seamless-redux">seamless-redux</a>
+      </div>
         <div class="lang-selector">
               <a href="#" data-language-name="jsx">jsx</a>
         </div>
@@ -225,10 +228,10 @@
             <a href="#setup" class="toc-h1 toc-link" data-title="Setup">Setup</a>
           </li>
           <li>
-            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+            <a href="#example" class="toc-h1 toc-link" data-title="Example">Example</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#set-entity" class="toc-h2 toc-link" data-title="Set Entity">Set Entity</a>
+                    <a href="#create-entity" class="toc-h2 toc-link" data-title="Create Entity">Create Entity</a>
                   </li>
                   <li>
                     <a href="#component" class="toc-h2 toc-link" data-title="Component">Component</a>
@@ -239,10 +242,10 @@
               </ul>
           </li>
           <li>
-            <a href="#seamless" class="toc-h1 toc-link" data-title="Seamless">Seamless</a>
+            <a href="#seamless-api" class="toc-h1 toc-link" data-title="Seamless API">Seamless API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-entity" class="toc-h2 toc-link" data-title="Create Entity">Create Entity</a>
+                    <a href="#create-entity-2" class="toc-h2 toc-link" data-title="Create Entity">Create Entity</a>
                   </li>
                   <li>
                     <a href="#get-entity" class="toc-h2 toc-link" data-title="Get Entity">Get Entity</a>
@@ -329,8 +332,45 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">userEntity</span> <span class="o">=</span> <span class="nx">seamless</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">(</span><span class="s2">"User"</span><span class="p">);</span>
+<span class="nx">userEntity</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span> <span class="c1">// Change the loading state to true</span>
+<span class="nx">userEntity</span><span class="p">.</span><span class="nx">newData</span><span class="p">({</span> <span class="na">username</span><span class="p">:</span> <span class="s2">"Barak"</span> <span class="p">});</span> <span class="c1">// Set the data</span>
+<span class="nx">userEntity</span><span class="p">.</span><span class="nx">newError</span><span class="p">(</span><span class="s2">"Some error"</span><span class="p">);</span> <span class="c1">// Set the error to true and the message to "Some error"</span>
+</code></pre>
+<blockquote>
+<p>Store will look like</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"dataEntities"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span> <span class="nl">username</span><span class="p">:</span> <span class="s2">"Barak"</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"loadingEntities"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"User"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="s2">"errorEntities"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"isError"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"Some error"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 <p><code>React</code> should render DOM elements, and <code>Redux</code> should handle state management - easy to say, hard to do.
-<code>seamless-redux</code> facilitate the separation between <code>React</code> and <code>Redux</code> by eliminating the <code>dispatch</code> method and the overhead of writing repetitive reducers.</p>
+<code>seamless-redux</code> facilitate the separation between <code>React</code> and <code>Redux</code> by eliminating the <code>dispatch</code> method and the overhead of writing repetitive code.</p>
+
+<p>To improve  React/Redux architecture, <code>seamless-redux</code> created decorators for common <em>actions/reducers/selectors</em> to better handle state management for loading state, data state, and error state.
+<aside class="success">
+<strong>Yes</strong>, <code>seamless-redux</code> is using <a href="https://github.com/reduxjs/reselect">reselect</a> by default
+</aside>
+<aside class="success">
+<strong>Yes</strong>, <code>seamless-redux</code> and can be integrated to an exciting store
+</aside>
+<aside class="success">
+<strong>No</strong>, <code>seamless-redux</code> is not a breaking change
+</aside></p>
 <h1 id='setup'>Setup</h1>
 <blockquote>
 <p>index.js</p>
@@ -371,11 +411,11 @@ Then, the <code>redux</code> store will have three new subtrees<br>
 <p><code>entity.finish()</code> will change the loading state to <code>false</code></p>
 
 <p><code>entity.newData(data)</code> will change the data state to <code>data</code></p>
-<h1 id='getting-started'>Getting Started</h1><h2 id='set-entity'>Set Entity</h2>
-<p>Creating an entity will initiate the data, loading, and error states.</p>
-<pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">seamless</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../index'</span>
+<h1 id='example'>Example</h1><h2 id='create-entity'>Create Entity</h2><pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">seamless</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../index'</span>
 <span class="nx">seamless</span><span class="p">.</span><span class="nx">createEntity</span><span class="p">(</span><span class="s2">"User"</span><span class="p">,</span> <span class="p">{});</span>
-</code></pre><h2 id='component'>Component</h2>
+</code></pre>
+<p>Creating an entity will initiate the data, loading, and error states.</p>
+<h2 id='component'>Component</h2>
 <blockquote>
 <p>Component</p>
 </blockquote>
@@ -389,7 +429,7 @@ Then, the <code>redux</code> store will have three new subtrees<br>
 
 <span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PureComponent</span> <span class="p">{</span>
   <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">authUserAction</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
+    <span class="nx">authUserAction</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
@@ -429,7 +469,7 @@ Then, the <code>redux</code> store will have three new subtrees<br>
 <span class="p">};</span>
 </code></pre>
 <p>Call the action from any component, no <code>dispatch</code> required. </p>
-<h1 id='seamless'>Seamless</h1><h2 id='create-entity'>Create Entity</h2><pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">seamelss</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../index.js'</span><span class="p">;</span>
+<h1 id='seamless-api'>Seamless API</h1><h2 id='create-entity-2'>Create Entity</h2><pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">seamelss</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'../index.js'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">entityName</span> <span class="o">=</span> <span class="s2">"MyEntity"</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">defaultState</span> <span class="o">=</span> <span class="p">{};</span>
 <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
@@ -474,9 +514,7 @@ Then, the <code>redux</code> store will have three new subtrees<br>
 <h1 id='loading-state'>Loading State</h1><h2 id='reset'>Reset</h2><pre class="highlight jsx tab-jsx"><code><span class="nx">myEntity</span><span class="p">.</span><span class="nx">reset</span><span class="p">()</span>
 </code></pre>
 <p>Reset the data, loading, and error, to the default values.</p>
-<h2 id='start-loading'>Start Loading</h2>
-<p>Set the loading state to true.</p>
-<pre class="highlight jsx tab-jsx"><code><span class="nx">myEntity</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+<h2 id='start-loading'>Start Loading</h2><pre class="highlight jsx tab-jsx"><code><span class="nx">myEntity</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
 <span class="p">{</span>
     <span class="s2">"loadingEntities"</span><span class="p">:</span> <span class="p">{</span>
@@ -484,7 +522,9 @@ Then, the <code>redux</code> store will have three new subtrees<br>
 <span class="o">+</span>       <span class="s2">"MyEntity"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="p">}:</span>
 <span class="p">}</span>
-</code></pre><h2 id='finish-loading'>Finish Loading</h2>
+</code></pre>
+<p>Set the loading state to true.</p>
+<h2 id='finish-loading'>Finish Loading</h2>
 <p>Set the loading state to false/</p>
 <pre class="highlight jsx tab-jsx"><code><span class="nx">myEntity</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
