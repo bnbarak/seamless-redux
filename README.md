@@ -1,12 +1,9 @@
 # Motivation
 
-`React` should render DOM elements, and `Redux` should handle state management.
-Easy to say, hard to write.
-`seamless-redux` facilitate the separation `React` and `Redux` by eliminating the `dispatch` method and the overhead of writing repetitive `Redux` code.
+`React` should render DOM elements, and `Redux` should handle state management - easy to say, hard to do.
+`seamless-redux` facilitate the separation between `React` and `Redux` by eliminating the `dispatch` method and the overhead of writing repetitive reducers.
 
 # Setup
-
-1.
 
 ```javascript
 // Root Reducer
@@ -17,8 +14,6 @@ export default combineReducers({
   ...entities
 });
 ```
-
-2.
 
 ```javascript
 // index.js
@@ -53,12 +48,12 @@ export const seamless = Seamless(store);
 
 ```javascript
 const defaultState = {};
-const v = {
+const options = {
   defaultIsLoading: true
 };
 ```
 
-- `entityName: String` **[required]** - Name of the entity
+- `entityName: String` **[requir    ed]** - Name of the entity
 - `defaultState: Any` - Default state of the entity. Default `{}`
 - `options: Object` - Additional options
   - `defaultIsLoading: Boolean` - default loading state. Default: _true_
