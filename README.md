@@ -5,14 +5,10 @@
 `seamless-redux` facilitate the separation between `React` and `Redux` by eliminating the `dispatch` method and the overhead of writing repetitive code.
 
 To improve  React/Redux architecture, `seamless-redux` created decorators for common *actions/reducers/selectors* to better handle state management for loading state, data state, and error state.
-<aside class="success">
-**Yes**, `seamless-redux` is using [reselect](https://github.com/reduxjs/reselect) by default
-</aside>
-<aside class="success">
-**Yes**, `seamless-redux` and can be integrated to an exciting store
-</aside>
-<aside class="success">
-**No**, `seamless-redux` is not a breaking change
+
+* **Yes**, `seamless-redux` is using [reselect](https://github.com/reduxjs/reselect) by default
+* **Yes**, `seamless-redux` and can be integrated to an exciting store
+* **No**, `seamless-redux` is not a breaking change
 </aside>
 
 
