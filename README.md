@@ -17,7 +17,7 @@ To improve  React/Redux architecture, `seamless-redux` created decorators for co
 
 
 # Documentation
-See [seamless-redux](https://github.com/bnbarak/seamless-redux) documentations
+See [seamless-redux](https://bnbarak.github.io/seamless-reduxk) documentations
 
 # Example
 
