@@ -59,6 +59,8 @@ To improve  React/Redux architecture, `seamless-redux` created decorators for co
 
 # Setup
 > npm
+
+
 ```bash
 npm install seamless-redux
 ```
