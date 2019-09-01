@@ -10,6 +10,8 @@ To improve  React/Redux architecture, `seamless-redux` created decorators for co
 * **No**, `seamless-redux` is not a breaking change
 </aside>
 
+# Install
+`npm install seamless-redux`
 
 # Documentation
 See [seamless-redux](https://bnbarak.github.io/seamless-reduxk) documentations
