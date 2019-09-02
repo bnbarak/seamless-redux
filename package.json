@@ -11,8 +11,9 @@
     "deply-docs": "cd ./slate && ./deploy.sh",
     "prepublish": "npm run test && npm run build && npm run deply-docs"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "bnbarak",
+  "license": "MIT",
+  "homepage": "https://github.com/bnbarak/seamless-redux",
   "dependencies": {
     "keymirror": "^0.1.1",
     "lodash": "^4.17.14",
