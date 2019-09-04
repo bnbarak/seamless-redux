@@ -14,7 +14,7 @@ To improve  React/Redux architecture, `seamless-redux` created decorators for co
 `npm install seamless-redux`
 
 # Documentation
-See [seamless-redux](https://bnbarak.github.io/seamless-reduxk) documentations
+See [seamless-redux](https://bnbarak.github.io/seamless-redux) documentations
 
 # Example
 
