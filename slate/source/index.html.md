@@ -187,7 +187,11 @@ import { seamelss } from '../index.js';
 const entityName = "MyEntity";
 const defaultState = {};
 const options = {
-  defaultIsLoading: true
+  enableError: true,
+  enableIsLoading: true,
+  defaultIsLoading: true,
+  defaultIsError: false,
+  defaultErrorData: null,
 };
 seamless.createEntity(entityName, defaultState, options);
 ```
@@ -196,7 +200,7 @@ Argument | Default | Required | Description
 --------- | ------- | ----------- | -----------
 entityName | null | true | The name of the entity, example: "User"
 defaultState| `{}` | false | The entity's initial data state
-options| `{defaultIsLoading: true}` | false | Additional options
+options| `{ enableError: true, enableIsLoading: true, defaultIsLoading: true, defaultIsError: false, defaultErrorData: null }` | false | Additional options
 
 ## Get Entity
 
