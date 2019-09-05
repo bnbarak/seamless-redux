@@ -38,6 +38,7 @@ const entityReducer = (state = {}, action) => {
   if (type === NEW_DATA) {
     const newState = state;
     newState[entityName] = data;
+    if (typeof data === 'object') return _.cloneDeep(newState);
     return { ...newState };
   }
 
@@ -45,7 +46,7 @@ const entityReducer = (state = {}, action) => {
     const newState = state;
     const oldData = newState[entityName];
     newState[entityName] = combineData(oldData, data);
-    return { ...newState };
+    return _.cloneDeep(newState);
   }
 
   if (type === UPDATE_OBJECT_BY_KEY) {
@@ -54,7 +55,7 @@ const entityReducer = (state = {}, action) => {
     if (oldData) {
       newState[entityName][key] = data;
     }
-    return { ...newState };
+    return _.cloneDeep(newState);
   }
 
   if (type === TOGGLE_BOOLEAN) {
