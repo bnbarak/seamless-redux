@@ -1,3 +1,5 @@
+![Test Image 1](seamless-redux-logo.png)
+
 # Motivation
 
 `React` should render DOM elements, and `Redux` should handle state management - easy to say, hard to do.
