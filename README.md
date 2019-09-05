@@ -14,8 +14,11 @@ To improve  React/Redux architecture, `seamless-redux` created decorators for co
 `npm install seamless-redux`
 
 # Documentation
-See [seamless-redux](https://bnbarak.github.io/seamless-redux) documentations
+[seamless-redux](https://bnbarak.github.io/seamless-redux) documentations
 
+Live Example
+
+[![Edit seamless-redux example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-example-2q9be?fontsize=14)
 # Example
 
 > Entity

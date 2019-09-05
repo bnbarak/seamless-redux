@@ -7,7 +7,7 @@ export default (entityName, data, isLoading, isError, errorData, dispatch) => {
     data,
     isLoading,
     isError,
-    errorData
+    errorData,
   };
 
   dispatch(action);
