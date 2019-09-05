@@ -153,11 +153,15 @@ describe("Entity class", () => {
     });
 
     describe("defaultIsError", () => {
+      const defaultErrorData = "error";
+      const defaultIsError = false;
+
       before(() => {
         store = createStore();
         const { dispatch } = store;
         const options = {
-          defaultIsError: false
+          defaultIsError,
+					defaultErrorData
         };
         entity = new Entity(entityName, defaultState, dispatch, options);
       });
@@ -165,20 +169,21 @@ describe("Entity class", () => {
       it("should have isLoading set to false by default", () => {
         const { errorEntities } = store.getState();
         const { isError, data } = errorEntities[entityName];
-        isFalse(isError);
-        isNull(data);
+				isTrue(isError === defaultIsError);
+        isTrue(data === defaultErrorData);
       });
     });
 
+
     describe("enableIsLoading set to false", () => {
-      it("should not add loading to Entity object", () => {
-        const options = {
-          enableIsLoading: false
-        };
-        const entity = new Entity(entityName, null, fakeDispatch, options);
-        isUndefined(entity.isLoading);
-      });
-    });
+			it("should not add loading to Entity object", () => {
+				const options = {
+					enableIsLoading: false
+				};
+				const entity = new Entity(entityName, null, fakeDispatch, options);
+				isUndefined(entity.isLoading);
+			});
+		});
 
     describe("enableError set to false", () => {
       it("should not add loading to Entity object", () => {
