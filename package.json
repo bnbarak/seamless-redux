@@ -1,6 +1,6 @@
 {
   "name": "seamless-redux",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test:watch": "./node_modules/.bin/mocha --require @babel/register --watch",
     "lint": "./node_modules/eslint/bin/eslint.js src --fix",
     "deply-docs": "cd ./slate && ./deploy.sh",
-    "prepublish": "npm run test && npm run build && npm run deply-docs"
+    "prepublish": "npm run test && npm run build"
   },
   "author": "bnbarak",
   "license": "MIT",

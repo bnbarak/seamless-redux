@@ -4,14 +4,14 @@ const { INIT_ENTITY, RESET_ENTITY, NEW_ERROR } = ACTION_TYPES_NAMES;
 
 const entityReducer = (state = {}, action) => {
   const {
-    type, data, entityName, isError,
+    type, data, entityName, isError, errorData,
   } = action;
 
   if (type === INIT_ENTITY) {
     const newState = state;
     newState[entityName] = {
-      isError: false,
-      data: null,
+      isError,
+      data: errorData,
     };
     return { ...newState };
   }
@@ -23,8 +23,8 @@ const entityReducer = (state = {}, action) => {
 
   if (type === RESET_ENTITY) {
     const newState = state;
-    newState[entityName].data = null;
-    newState[entityName].isErrors = false;
+    newState[entityName].data = errorData;
+    newState[entityName].isErrors = isError;
     return { ...newState };
   }
 

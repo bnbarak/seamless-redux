@@ -14,8 +14,11 @@ import findInArrayAndUpdate from 'Actions/findInArrayAndUpdate.action';
 class Entity {
   constructor(name, defaultData, dispatch, userOptions) {
     const defaultOptions = {
+      enableError: true,
       enableIsLoading: true,
       defaultIsLoading: true,
+      defaultIsError: false,
+      defaultErrorData: null,
     };
     const options = _.extend(defaultOptions, userOptions);
 
@@ -23,22 +26,32 @@ class Entity {
     this.dispatch = dispatch;
     this.name = name;
     this.defaultData = defaultData;
-    this.isError = false;
+    this.isError = undefined;
+    this.errorData = undefined;
+    this.isLoading = undefined;
     this.init();
   }
 
-  reset(isLoading = this.isLoading) {
+  reset(
+    isLoading = this.isLoading,
+    isError = this.isError,
+    errorData = this.errorData,
+  ) {
     const { dispatch, name, defaultData } = this;
-    resetAction(name, defaultData, isLoading, dispatch);
+    resetAction(name, defaultData, isLoading, isError, errorData, dispatch);
   }
 
   init() {
-    const { options, defaultData } = this;
-    let isLoading;
-    if (options.enableIsLoading) isLoading = options.defaultIsLoading;
+    const { options } = this;
+    if (options.enableIsLoading) {
+      this.isLoading = options.defaultIsLoading;
+    }
+    if (options.enableError) {
+      this.isError = options.defaultIsError;
+      this.errorData = options.defaultErrorData;
+    }
     const { dispatch, name } = this;
-    const data = defaultData;
-    initAction(name, data, isLoading, dispatch);
+    initAction(name, this.defaultData, this.isLoading, this.isError, this.errorData, dispatch);
   }
 
   start() {

@@ -30,14 +30,15 @@ describe('EasyRedux class', () => {
     });
 
     it('should get the state', () => {
-      const { dataEntities, loadingEntities, entitiesError } = seamless.state;
+      const { dataEntities, loadingEntities, errorEntities } = seamless.state;
       isTrue(_.isEqual(dataEntities, { [entityName]: initialState }));
       isTrue(_.isEqual(loadingEntities, { [entityName]: true }));
       isTrue(
-        _.isEqual(entitiesError, {
+        _.isEqual(errorEntities, {
           [entityName]: { isError: false, data: null },
         }),
       );
     });
   });
 });
+
