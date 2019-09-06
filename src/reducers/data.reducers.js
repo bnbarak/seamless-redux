@@ -13,7 +13,7 @@ const {
   FIND_IN_ARRAY_AND_UPDATE,
 } = ACTION_TYPES_NAMES;
 
-const entityReducer = (state = {}, action) => {
+const entityReducer = (state = {}, action = {}) => {
   const {
     type, data, entityName, key, func,
   } = action;

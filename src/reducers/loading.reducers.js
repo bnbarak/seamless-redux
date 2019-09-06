@@ -7,7 +7,7 @@ const {
   RESET_ENTITY,
 } = ACTION_TYPES_NAMES;
 
-const entityReducer = (state = {}, action) => {
+const entityReducer = (state = {}, action = {}) => {
   const {
     type, entityName, isLoading,
   } = action;
